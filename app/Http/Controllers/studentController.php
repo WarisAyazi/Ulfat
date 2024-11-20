@@ -11,7 +11,8 @@ class studentController extends Controller
      */
     public function index()
     {
-        return view('student.main');
+        return view('student.main')
+            ->with('active', 'student');
     }
 
     /**

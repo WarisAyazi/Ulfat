@@ -25,13 +25,16 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link active " aria-current="page" href="{{route('student.index')}}">Students</a>
+                                <a class="nav-link @if($active = 'student') active @endif " aria-current="page" href="{{route('student.index')}}">Students</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link  " href="#">Teachers</a>
+                                <a class="nav-link @if($active = 'teacher') active @endif  " href="#">Teachers</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link  " href="#">Students</a>
+                                <a class="nav-link @if($active = 'subject') active @endif  " href="#">Subjects</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @if($active = 'time') active @endif  " href="#">Times</a>
                             </li>
 
                         </ul>

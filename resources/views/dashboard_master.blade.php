@@ -48,13 +48,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{route('dashboard')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Students</span></a>
+                    <span>Dashboard</span></a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="{{route('post.index')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Teachers</span></a>
+                    <span>Posts</span></a>
             </li>
 
             <!-- Divider -->
@@ -123,8 +123,7 @@
 
                 </nav>
 
-            </div>
-            <div>
+
 
 
                 @yield('content')
