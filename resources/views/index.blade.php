@@ -25,7 +25,7 @@
       <a href="" class="col m-2 px-4 py-5 bg-info text-light btn text-start"><div ><h5 class="mt-4">Add new Student</h5></div></a>
       <a href="" class="col m-2 px-4 py-5 bg-secondary text-light btn text-start"><div ><h1>12</h1><h5>Add teacher</h5></div></a>
       <a href="" class="col m-2 px-4 py-5 bg-primary text-light btn text-start"><div ><h1>8</h1><h5>Add Subject</h5></div></a>  
-      
+      <div>hello</div>
     </div>
  
   </div>
