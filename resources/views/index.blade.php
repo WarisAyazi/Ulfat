@@ -12,7 +12,7 @@
 </head>
 
 <body class="bg-light">
-  <img src="{{asset('logo.JPG')}}" class="rounded mx-auto d-block mt-3" style="width:100px" alt="...">
+  <img src="{{asset('logo.png')}}" class="rounded mx-auto d-block mt-3" style="width:100px" alt="...">
   <h1 class="text-center text-dark fw-bolder mt-5" style="font-family:arial">Eng Hamidullah Ulfat</h1>
   <div class="mx-auto w-75 mt-5" style="display:grid; align-items:center">
     <div class="row">
@@ -64,6 +64,7 @@
       </a>
     </div>
     <div class="row">
+<<<<<<< HEAD
       <a href="" class="col m-2 px-4 py-5 bg-warning text-light btn text-start">
         <div>
           <h1>{{$tea}}</h1>
@@ -89,6 +90,13 @@
       </a>
 
 
+=======
+      <a href="{{route('teacher.index')}}" class="col m-2 px-4 py-5 bg-warning text-light btn text-start"><div><h1>100</h1><h4>Teacher Salary</h4></div></a>
+      <a href="{{route('time.create')}}" class="col m-2 px-4 py-5 bg-info text-light btn text-start"><div ><h5 class="mt-4">Add teacher, class and time</h5></div></a>
+      <a href="" class="col m-2 px-4 py-5 bg-secondary text-light btn text-start"><div ><h1>12</h1><h5>Add teacher</h5></div></a>
+      <a href="" class="col m-2 px-4 py-5 bg-primary text-light btn text-start"><div ><h1>8</h1><h5>Add Subject</h5></div></a>
+      
+>>>>>>> c769b55f1883453aacb6b0d31ec78e0bfeeb6893
     </div>
 
   </div>

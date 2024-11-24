@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\teacher;
 use Illuminate\Http\Request;
 
 class timeController extends Controller
@@ -19,7 +20,9 @@ class timeController extends Controller
      */
     public function create()
     {
-        //
+        $teacher = teacher::all();
+        return view('AddTeacher.teacher')
+                    ->with('teacher', $teacher);
     }
 
     /**
