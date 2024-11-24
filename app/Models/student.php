@@ -12,5 +12,6 @@ class student extends Model
         'stuName',
         'stuFname',
         'subjects_id',
+        'gender'
     ]);
 }

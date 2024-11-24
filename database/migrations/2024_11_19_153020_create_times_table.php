@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('times', function (Blueprint $table) {
             $table->bigIncrements('timeID');
-            $table->integer('time');
+            $table->string('time');
             $table->timestamps();
         });
     }

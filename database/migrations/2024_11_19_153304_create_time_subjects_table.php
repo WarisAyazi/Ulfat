@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('times_id');
             $table->foreign('subjects_id')->references('subjectID')->on('subjects')->ondelete('casecade');
             $table->foreign('times_id')->references('timeID')->on('times')->ondelete('casecade');
+            $table->timestamps();
         });
     }
 

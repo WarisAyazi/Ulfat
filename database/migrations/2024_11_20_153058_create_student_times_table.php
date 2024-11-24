@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('student_subjects', function (Blueprint $table) {
-            $table->unsignedBigInteger('subjects_id');
+        Schema::create('student_times', function (Blueprint $table) {
             $table->unsignedBigInteger('students_id');
-            $table->foreign('subjects_id')->references('subjectID')->on('subjects')->ondelete('casecade');
+            $table->unsignedBigInteger('times_id');
             $table->foreign('students_id')->references('studentID')->on('students')->ondelete('casecade');
+            $table->foreign('times_id')->references('timeID')->on('times')->ondelete('casecade');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('student_subjects');
+        Schema::dropIfExists('student_times');
     }
 };

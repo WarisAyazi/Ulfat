@@ -15,6 +15,7 @@ return new class extends Migration
             $table->bigIncrements('studentID');
             $table->string('stuName');
             $table->string('stuFname');
+            $table->string('gender');
             $table->unsignedBigInteger('subjects_id');
             $table->timestamps();
             $table->foreign('subjects_id')->references('subjectID')->on('subjects')->ondelete('casecade');
