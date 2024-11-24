@@ -9,8 +9,8 @@ class teacher extends Model
 {
     use HasFactory;
     protected $fillable = ([
-        'teaName',
-        'teaLastName',
-        'teaFname',
+        'TeaName',
+        'TeaLastName',
+        'TeaFname',
     ]);
 }

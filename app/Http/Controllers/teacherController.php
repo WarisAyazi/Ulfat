@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\teacher;
 use Illuminate\Http\Request;
 
 class teacherController extends Controller
@@ -11,7 +12,8 @@ class teacherController extends Controller
      */
     public function index()
     {
-        //
+        return view('AddTeacher.main')
+                    ->with('teacher', teacher::all());
     }
 
     /**
@@ -19,7 +21,7 @@ class teacherController extends Controller
      */
     public function create()
     {
-        //
+        $teacher = teacher::all();
     }
 
     /**
@@ -27,7 +29,18 @@ class teacherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    // return $request;
+        teacher::create([
+            'TeaName'=>$request->name,
+            'TeaFname'=>$request->fname,
+            'TeaLastName'=>$request->last
+            // 'subName'=>$request->subName,
+            // 'subLanguage'=>$request->language,
+            // 'year'=>$request->year
+            
+        ]);
+
+        return redirect()->route('index');
     }
 
     /**

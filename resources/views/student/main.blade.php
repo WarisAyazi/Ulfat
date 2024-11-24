@@ -98,11 +98,11 @@
 
 </form>
 
-
+{{
 <!-- select student.StudentID , student.FirstName , teacher.TeacherID  , teacher.FirstName from student join studnet_teacher on student.StudentID = studnet_teacher.StudentID JOIN  teacher on studnet_teacher.TeacherID = teacher.TeacherID; -->
 <!-- select student.StudentID , student.FirstName , teacher.TeacherID  , teacher.FirstName from student join studnet_teacher on student.StudentID = studnet_teacher.StudentID JOIN  teacher on studnet_teacher.TeacherID = teacher.TeacherID WHERE teacher.TeacherID = 1; -->
 <!-- select student.StudentID , student.FirstName , teacher.TeacherID  , teacher.FirstName from student join studnet_teacher on student.StudentID = studnet_teacher.StudentID JOIN  teacher on studnet_teacher.TeacherID = teacher.TeacherID WHERE student.StudentID = 1; -->
-
+{{-- 
 select student.StudentID , student.FirstName , teacher.TeacherID , teacher.FirstName , class.ClassID , class.ClassID , fee.Amount , fee.Month from student
 join studnet_teacher on student.StudentID = studnet_teacher.StudentID
 JOIN teacher on studnet_teacher.TeacherID = teacher.TeacherID
@@ -125,6 +125,6 @@ select teacher.TeacherID , teacher.FirstName , class.ClassID , class.ClassName ,
 join class on teacher.TeacherID = class.ClassID
 join fee on class.ClassID = fee.ClassID
 WHERE teacher.TeacherID = 1 AND fee.Month = 'KHOT' ;
-
+ 
 
 @endsection

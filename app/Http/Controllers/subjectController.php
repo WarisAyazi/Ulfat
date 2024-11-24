@@ -11,7 +11,7 @@ class subjectController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -19,7 +19,7 @@ class subjectController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
