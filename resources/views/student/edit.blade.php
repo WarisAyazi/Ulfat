@@ -41,7 +41,7 @@ $fname = $row->stuFname;
             </div>
         </div>
         <div class="col">
-
+            jjj
             <div class="mb-3">
                 <label for="class" class="form-label">Class</label>
                 <select class="form-select" name="class" id="class" aria-label="Default select example">
