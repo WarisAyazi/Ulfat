@@ -5,11 +5,10 @@
 
 
   
-<div class="row mt-3">
+<div class="row w-75 mx-auto mt-3">
   {{-- This is first card --}}
-  <form action="{{route('teacher.store')}}" method="POST">
+  <form action="{{route('teacher.store')}}" method="POST" class="col">
     @csrf
-<div class="col">
 <div class="card">
   <div class="card-header">
     <h5>
@@ -42,18 +41,19 @@
   </div>
   
 </div>
-</div>
 </form>
   
  
-  {{-- this is the new card --}}
-  <div class="col">
+  {{-- this is the second new card --}}
+  <form class="col" action="{{route('subject.store')}}" method="POST">
+   @csrf
   <div class="card">
+
     <div class="card-header">
       <h5>Subject</h5>
     </div>
-    <div class="card-body">
 
+    <div class="card-body">
 
         <div class="px-2">
         <label for="subName" class="form-lable" >Subject Name:</label>
@@ -66,8 +66,8 @@
           </div>
     
           <div class="px-2">
-            <label for="teacher_id" class="form-lable" >Teacher:</label>
-            <select name="teacher_id" id="teacher_id" class="form-select">
+            <label class="form-lable" >Teacher:</label>
+            <select name="teacher_id" class="form-select">
               @foreach($teacher as $row)
               
               <option value="{{$row->teacherId}}">{{$row->TeaName}}</option>
@@ -89,43 +89,46 @@
             <option value="pashto">Pashto</option>
           </select>
         </div>
-    
-     
-       
-        
-        <input type="submit" value="save" class="btn btn-primary mx-2 mt-3">
-          
       </div>
-    </div>
-    </div>
-    <div class="col">
-      <div class="col">
-        <div class="card">
-          <div class="card-header">
-            <h5>
-              Time
-            </h5>
-          </div>
-          <div class="card-body">
-            <div class="col">
-        
-              <div class="px-2">
-              <label for="" class="form-lable" >Time:</label>
-              <input type="text" name="" class="form-control">
-              </div>
-            
-            
-              <input type="submit" value="save" class="btn btn-primary mx-2 mt-3">
-                
-            </div>
-            
-          </div>
-          
-        </div>
-        </div>
-          
-    </div>
+      <div>
+        <input type="submit" value="save" class="btn btn-primary mx-2 mt-3">
+      </div>
   </div>
+      </form>
+
+          {{-- This is the third card --}}
+    <form class="col" action="{{route('time.index')}}" method="POST">
+      @csrf
+      <div class="card">
+        <div class="card-header">
+          <h5>
+            Time
+          </h5>
+        </div>
+        <div class="card-body">
+          <div class="col">
+      
+            <div class="px-2">
+            <label for="" class="form-lable" >Time:</label>
+            <input type="text" name="" class="form-control">
+            </div>
+          
+          
+            <input type="submit" value="save" class="btn btn-primary mx-2 mt-3">
+              
+          </div>
+          
+        </div>
+        
+      </div>
+        
+  </form>
+
+        
+      </div>
+
+
+
 
 
 
