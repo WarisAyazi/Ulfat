@@ -19,4 +19,4 @@ route::resource('time', 'App\Http\Controllers\timeController');
 
 Route::resource('teacher', 'App\Http\Controllers\teacherController');
 
-Route::resource('subject',subjectController::class);
+Route::resource('subject', 'App\Http\Controllers\subjectController');

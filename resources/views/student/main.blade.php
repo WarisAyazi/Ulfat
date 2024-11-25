@@ -55,15 +55,12 @@
                     <td>{{$row -> studentID}}</td>
                     <td>{{$row -> stuName}}</td>
                     <td>{{$row -> stuFname}}</td>
-                    <td><a href="{{route('student.show')}}" class="btn btn-sm btn-info">Detail</a></td>
+                    <td><a href="{{route('student.show',$row->studentID)}}" class="btn btn-sm btn-info">Detail</a></td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
 </div>
-<<<<<<< HEAD
-=======
 
->>>>>>> 738f22f95beb97f23d45a98c17e1c7159d368a15
 @endsection

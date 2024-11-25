@@ -45,7 +45,6 @@ $tim++;
       </a>
       <a href="{{route('student.create')}}" class="col m-2 px-4 py-5 bg-secondary   text-light btn text-start  ">
         <div>
-<<<<<<< HEAD
           <h5 class="mt-4">Add new Student</h5>
         </div>
       </a>
@@ -53,26 +52,10 @@ $tim++;
         <div>
           <h1>{{ $sub}}</h1>
           <h5>Subjects</h5>
-=======
-          <h5 class="mt-4">Add new Students</h5>
-        </div>
-      </a>
-      <a href="{{route('month.create')}}" class="col m-2 px-4 py-5 bg-info text-light btn text-start">
-        <div>
-
-          <h5>Monthly Regestration</h5>
-        </div>
-      </a>
-      <a href="" class="col m-2 px-4 py-5 bg-warning text-light btn text-start">
-        <div>
-          <h1>{{ $sub}} & {{$tim}}</h1>
-          <h5>Subject and Time</h5>
->>>>>>> 738f22f95beb97f23d45a98c17e1c7159d368a15
         </div>
       </a>
     </div>
     <div class="row">
-<<<<<<< HEAD
 
       <a href="" class="col m-2 px-4 py-5 bg-warning text-light btn text-start">
         <div>
@@ -88,9 +71,7 @@ $tim++;
         </div>
       </a>
       <a href="{{route('time.create')}}" class="col m-2 px-4 py-5 bg-info text-light btn text-start">
-        <div>
-          <h5 class="mt-4">Add Teacher, Class and Time</h5>
-        </div>
+        <h5 class="mt-4">Add Teacher, Class and Time</h5>
       </a>
 
       <a href="" class="col m-2 px-4 py-5 bg-primary text-light btn text-start">
@@ -98,20 +79,12 @@ $tim++;
           <h5>About</h5>
         </div>
       </a>
-
-
-=======
-
-
-      <a href="{{route('teacher.index')}}" class="col m-2 px-4 py-5 bg-warning text-light btn text-start"><div><h1>100</h1><h4>Teacher Salary</h4></div></a>
-      <a href="{{route('time.create')}}" class="col m-2 px-4 py-5 bg-info text-light btn text-start"><div ><h5 class="mt-4">Add teacher, class and time</h5></div></a>
-      <a href="" class="col m-2 px-4 py-5 bg-secondary text-light btn text-start"><div ><h1>12</h1><h5>Add teacher</h5></div></a>
-      <a href="" class="col m-2 px-4 py-5 bg-primary text-light btn text-start"><div ><h1>8</h1><h5>Add Subject</h5></div></a>
-      
->>>>>>> 738f22f95beb97f23d45a98c17e1c7159d368a15
     </div>
 
+
   </div>
+
+
 
 </body>
 
