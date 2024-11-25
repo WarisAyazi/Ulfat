@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\subject;
 use Illuminate\Http\Request;
 
 class subjectController extends Controller
@@ -27,7 +28,19 @@ class subjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+
+        subject::create([
+
+            'subName'=>$request->subName,
+            'subLanguage'=>$request->language,
+            'year'=>$request->year,
+            'teachers_id'=>$request->teacherId,
+            'times_id'=>$request->time_id
+            
+        ]);
+
+        return redirect()->route('teacher.index');
     }
 
     /**
@@ -35,7 +48,7 @@ class subjectController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return $id;
     }
 
     /**

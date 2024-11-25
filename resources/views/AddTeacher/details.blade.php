@@ -31,10 +31,8 @@
 
 @endsection
 
+
 @section('content')
-
-
-
 
 <div class="card shadow">
   <h5 class="card-header">Teacher Information</h5>
@@ -54,7 +52,7 @@
           <td>{{$row->teacherID}}</td>
           <td>{{$row->TeaName}}</td>
           <td>{{$row->TeaLastName}}</td>
-          <td><a href="{{}}" class="btn btn-info btn-sm">Details</a></td>
+          <td><a href="{{route('subject.show'),$row->teacherID}}" class="btn btn-info btn-sm">Details</a></td>
         </tr>
         @endforeach
       </tbody>
@@ -62,12 +60,6 @@
   </div>
 </div>
  
-
- 
-
-  
-  
-
 
 
 
