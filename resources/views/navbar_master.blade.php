@@ -25,16 +25,25 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link @if($active = 'student') active @endif " aria-current="page" href="{{route('student.index')}}">Students</a>
+                                <a class="nav-link @if($active = 'student') active @endif " href="{{route('student.index')}}">Search for students</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link @if($active = 'teacher') active @endif  " href="#">Teachers</a>
+                                <a class="nav-link " href="{{route('student.create')}}">Add new Student</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link @if($active = 'subject') active @endif  " href="#">Subjects</a>
+                                <a class="nav-link " href="#">Subjects</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link @if($active = 'time') active @endif  " href="#">Times</a>
+                                <a class="nav-link " href="#">Times</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="{{route('teacher.index')}}">Teacher and Salary</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="{{route('time.create')}}">Add Teacher, Class and Time</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="#">About</a>
                             </li>
 
                         </ul>

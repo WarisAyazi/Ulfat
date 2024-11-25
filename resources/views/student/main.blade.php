@@ -43,7 +43,6 @@
             <thead>
                 <tr>
 
-<<<<<<< HEAD
                     <th>ID</th>
                     <th>Name</th>
                     <th>Father Name</th>
@@ -63,5 +62,4 @@
         </table>
     </div>
 </div>
-
 @endsection

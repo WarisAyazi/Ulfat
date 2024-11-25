@@ -45,12 +45,11 @@ class newClassController extends Controller
             'year' => 'required'
         ]);
 
-        // return $request->id;
-        fee::create(['amount' => $request->fee, 'month' => $request->month, 'year' => $request->year, 'subjects_id' => $request->class, 'students_id' => $request->id]);
+        fee::create(['amount' => $request->fee, 'month' => $request->month, 'year' => $request->year, 'subjects_id' => $request->class, 'students_id' => $request->id, 'teachers_id' => $request->teacher]);
         student_subject::create(['subjects_id' => $request->class, 'students_id' => $request->id]);
         student_teacher::create(['teachers_id' => $request->teacher, 'students_id' => $request->id]);
         student_time::create(['times_id' => $request->time, 'students_id' => $request->id]);
-        return redirect()->route('student.show', compact($request->id));
+        return redirect()->route('student.show', $request->id);
     }
 
     /**

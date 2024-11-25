@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('time_subjects', function (Blueprint $table) {
+            $table->bigIncrements('timSubID');
             $table->unsignedBigInteger('subjects_id');
             $table->unsignedBigInteger('times_id');
             $table->foreign('subjects_id')->references('subjectID')->on('subjects')->ondelete('casecade');

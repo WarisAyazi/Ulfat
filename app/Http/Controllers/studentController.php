@@ -76,7 +76,7 @@ class studentController extends Controller
 
         // return $request->id;
         student::create(['stuName' => $request->name, 'stuFname' => $request->fname, 'gender' => $request->gender, 'subjects_id' => $request->class]);
-        fee::create(['amount' => $request->fee, 'month' => $request->month, 'year' => $request->year, 'subjects_id' => $request->class, 'students_id' => $request->id]);
+        fee::create(['amount' => $request->fee, 'month' => $request->month, 'year' => $request->year, 'subjects_id' => $request->class, 'students_id' => $request->id, 'teachers_id' => $request->teacher]);
         student_subject::create(['subjects_id' => $request->class, 'students_id' => $request->id]);
         student_teacher::create(['teachers_id' => $request->teacher, 'students_id' => $request->id]);
         student_time::create(['times_id' => $request->time, 'students_id' => $request->id]);
@@ -104,7 +104,8 @@ class studentController extends Controller
          where students.studentID = ' . $id . ';');
 
         $student = DB::connection()->select(' select * from `students` where `studentID` =' . $id . ' limit 1;');
-        $fee = DB::connection()->select(' select students.studentID, students.stuName, subjects.subName as class, fees.amount, fees.month , fees.year,subjects.sublanguage, fees.created_at, fees.updated_at from `students`
+
+        $fee = DB::connection()->select(' select students.studentID, students.stuName, subjects.subName as class,fees.feeID, fees.amount, fees.month , fees.year, subjects.sublanguage, fees.created_at, fees.updated_at from `students`
         join fees on students.studentID = fees.students_id
         join subjects on fees.subjects_id = subjects.subjectID
          where students.studentID =' . $id . ' ;');
@@ -143,7 +144,6 @@ class studentController extends Controller
          SET stuName = "' . $request->name . '" , stuFname = "' . $request->fname . '" , subjects_id = ' . $request->class . ', gender = "' . $request->gender .
             '" where studentID = ' . $request->id . '  ;');
         return redirect()->route('student.show',  $request->id);
-        // $student = student::findOrFail($id);
     }
 
     /**

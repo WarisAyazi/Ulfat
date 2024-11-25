@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('student_teachers', function (Blueprint $table) {
+            $table->bigIncrements('stuTeaID');
             $table->unsignedBigInteger('students_id');
             $table->unsignedBigInteger('teachers_id');
             $table->foreign('students_id')->references('studentID')->on('students')->ondelete('casecade');

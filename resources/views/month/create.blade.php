@@ -10,17 +10,13 @@
     <div class="row">
         <div class="col">
             <div class="mb-3">
-                <label for="id" class="form-label">ID</label>
+                <label for="id" class="form-label">Student ID</label>
                 <input type="number" name="id" class="form-control" id="id" value="{{$id}}">
             </div>
             <div class="mb-3">
-                <label for="class" class="form-label">Class</label>
-                <select class="form-select" name="class" id="class" aria-label="Default select example">
-                    @foreach ($class as $row )
-                    <option value="{{$row->subjectID}}">{{$row->subName}}</option>
-                    @endforeach
-                </select>
-                @error('class')
+                <label for="fee" class="form-label">Fee</label>
+                <input type="number" name="fee" class="form-control" id="fee" placeholder="Fee">
+                @error('fee')
                 <p class="text-danger">{{$message}}</p>
                 @enderror
             </div>
@@ -35,16 +31,32 @@
 
         <div class="col">
             <div class="mb-3">
-                <label for="fee" class="form-label">Fee</label>
-                <input type="number" name="fee" class="form-control" id="fee" placeholder="Fee">
-                @error('fee')
+                <label for="year" class="form-label">Year</label>
+                <input type="number" name="year" class="form-control" id="year" placeholder="Year">
+                @error('year')
                 <p class="text-danger">{{$message}}</p>
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="year" class="form-label">Year</label>
-                <input type="number" name="year" class="form-control" id="year" placeholder="Year">
-                @error('year')
+                <label for="class" class="form-label">Class</label>
+                <select class="form-select" name="class" id="class" aria-label="Default select example">
+                    @foreach ($class as $row )
+                    <option value="{{$row->subjectID}}">{{$row->subName}}</option>
+                    @endforeach
+                </select>
+                @error('class')
+                <p class="text-danger">{{$message}}</p>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label for="teacher" class="form-label">Teacher</label>
+                <select class="form-select" name="teacher" id="teacher" aria-label="Default select example">
+                    <!-- <option selected disabled>Open this select menu</option> -->
+                    @foreach ($teacher as $row )
+                    <option value="{{$row->teacherID}}">{{$row->TeaName}}</option>
+                    @endforeach
+                </select>
+                @error('teacher')
                 <p class="text-danger">{{$message}}</p>
                 @enderror
             </div>

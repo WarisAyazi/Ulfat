@@ -11,8 +11,9 @@ class fee extends Model
     protected $fillable = ([
         'amount',
         'month',
+        'year',
         'students_id',
         'subjects_id',
-        'year'
+        'teachers_id'
     ]);
 }

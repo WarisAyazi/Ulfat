@@ -36,7 +36,6 @@
                     <td>{{$row -> created_at}}</td>
                     <td>
                         <a href="{{route('student.edit',$row->studentID)}}" class="btn btn-sm px-3 btn-primary">Edit</a>
-
                         <a href="{{route('student.destroy',$row->studentID)}}" class="btn btn-sm btn-danger">Delete</a>
                     </td>
 
@@ -154,6 +153,7 @@
         <table class="table text-center">
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>Name</th>
                     <th>class</th>
                     <th>Language</th>
@@ -161,13 +161,21 @@
                     <th>month</th>
                     <th>year</th>
                     <th>create_at</th>
-                    <th>updata_at</th>
-                    <th>action</th>
+                    <th colspan="2">action</th>
                 </tr>
             </thead>
             <tbody>
+                @php
+                $count = 1;
+                @endphp
                 @foreach ($fee as $row )
                 <tr>
+                    <td>
+                        @php
+                        echo $count;
+                        $count++
+                        @endphp
+                    </td>
                     <td>{{$row -> stuName}}</td>
                     <td>{{$row -> class}}</td>
                     <td>{{$row -> sublanguage}}</td>
@@ -175,13 +183,15 @@
                     <td>{{$row -> month}}</td>
                     <td>{{$row -> year}}</td>
                     <td>{{$row -> created_at}}</td>
-                    <td>{{$row -> updated_at}}</td>
-                    @php
-                    $fees = array('id'=> $row->studentID,'class' => $row->class, 'amount' => $row -> amount, 'month' => $row->month,'year' => $row->year)
-                    @endphp
+                    <td class="m-0">
+                        <a href="{{route('month.edit',$row->feeID)}}" class="btn btn-sm px-3 m-0 btn-primary d-inline">Edit</a>
                     <td>
-                        <a href="{{route('month.edit',$fees)}}" class="btn btn-sm px-3 btn-primary">Edit</a>
-                        <a href="{{route('student.show',$row->studentID)}}" class="btn btn-sm btn-danger">Delete</a>
+                        <form action="{{route('student.show',$row->studentID)}}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn m-0 btn-sm btn-danger">Delete</butto>
+                        </form>
+                    </td>
                     </td>
                 </tr>
                 @endforeach
