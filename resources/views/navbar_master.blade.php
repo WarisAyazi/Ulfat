@@ -31,16 +31,16 @@
                                 <a class="nav-link " href="{{route('student.create')}}">Add new Student</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="#">Subjects</a>
+                                <a class="nav-link " href="{{route('subject.index')}}">Subjects</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="#">Times</a>
+                                <a class="nav-link " href="{{route('time.index')}}">Times</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link " href="{{route('teacher.index')}}">Teacher and Salary</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="{{route('time.create')}}">Add Teacher, Class and Time</a>
+                                <a class="nav-link " href="{{route('new.index')}}">Add Teacher, Class and Time</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link " href="#">About</a>

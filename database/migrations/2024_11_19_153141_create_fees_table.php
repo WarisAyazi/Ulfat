@@ -21,7 +21,7 @@ return new class extends Migration
             $table->unsignedBigInteger('teachers_id');
             $table->timestamps();
             $table->foreign('subjects_id')->references('subjectID')->on('subjects')->ondelete('casecade');
-            $table->foreign('students_id')->references('studentID')->on('students')->ondelete('casecade');
+            $table->foreign('students_id')->references('studentID')->on('students')->ondelete('set null');
             $table->foreign('teachers_id')->references('teacherID')->on('teachers')->ondelete('casecade');
         });
     }

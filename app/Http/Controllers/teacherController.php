@@ -16,18 +16,16 @@ class teacherController extends Controller
     {
         if ($request->has('id')) {
             $id = DB::connection()->select('select * from teachers where teacherID = ' . $request->id . ';');
-            return view('AddTeacher.main')
+            return view('teacher.main')
                 ->with('teacher', $id);
         } elseif ($request->has('name')) {
             $name = DB::connection()->select('select * from teachers where TeaName = "' . $request->name . '" ;');
-            return view('AddTeacher.main')
+            return view('teacher.main')
                 ->with('teacher', $name);
         } else {
-            return view('AddTeacher.main')
+            return view('teacher.main')
                 ->with('teacher', teacher::all());
         }
-
-    
     }
 
     /**
@@ -35,7 +33,7 @@ class teacherController extends Controller
      */
     public function create()
     {
-        $teacher = teacher::all();
+        //
     }
 
     /**
@@ -43,14 +41,19 @@ class teacherController extends Controller
      */
     public function store(Request $request)
     {
-    // return $request;
-        teacher::create([
-            'TeaName'=>$request->name,
-            'TeaFname'=>$request->fname,
-            'TeaLastName'=>$request->last
-                        ]);
+        $request->validate([
 
-        return redirect()->route('index');
+            'name' => 'required',
+            'last' => 'required',
+            'fname' => 'required'
+        ]);
+        teacher::create([
+            'TeaName' => $request->name,
+            'TeaFname' => $request->fname,
+            'TeaLastName' => $request->last
+        ]);
+
+        return redirect()->route('teacher.index');
     }
 
     /**
@@ -58,7 +61,30 @@ class teacherController extends Controller
      */
     public function show(string $id)
     {
-        return $id;
+        $find = DB::connection()->select('select teachers.teacherID, teachers.TeaName , subjects.subName , times.time ,fees.amount  
+        from teachers join fees on teachers.teacherID = fees.teachers_id 
+        join subjects on  fees.subjects_id = subjects.subjectID 
+        JOIN times on subjects.times_id = times.timeID   
+        where teachers.teacherID = ' . $id . ' ; ');
+
+        $sum = 0;
+        $count = 0;
+        $name = '';
+        $id = 0;
+        foreach ($find as $row) {
+            $sum += $row->amount;
+            $name = $row->TeaName;
+            $id = $row->teacherID;
+            $count++;
+        };
+
+        $teacher = DB::connection()->select(' select * from `teachers` where `teacherID` =' . $id . ' limit 1;');
+        return view('teacher.show', compact('teacher'))
+            ->with('total', $find)
+            ->with('sum', $sum)
+            ->with('name', $name)
+            ->with('id', $id)
+            ->with('count', $count);
     }
 
     /**
@@ -66,7 +92,8 @@ class teacherController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $teacher = DB::connection()->select('select * from teachers where teacherID = ' . $id . ' ;');
+        return view('teacher.edit', compact('teacher'));
     }
 
     /**
@@ -74,7 +101,15 @@ class teacherController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'last' => 'required',
+            'fname' => 'required'
+        ]);
+        DB::connection()->update('update teachers
+        SET TeaName = "' . $request->name . '" , TeaFname = "' . $request->fname . '" , TeaLastName = "' . $request->last . '"  
+            where teacherID = ' . $id . '  ;');
+        return redirect()->route('teacher.show',  $id);
     }
 
     /**
@@ -82,6 +117,7 @@ class teacherController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        DB::connection()->delete('delete from teachers where teacherID = ' . $id . ' ;');
+        return redirect()->route('teacher.index');
     }
 }

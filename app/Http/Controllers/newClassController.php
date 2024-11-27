@@ -11,6 +11,7 @@ use App\Models\subject;
 use App\Models\teacher;
 use App\Models\time;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class newClassController extends Controller
 {
@@ -19,7 +20,11 @@ class newClassController extends Controller
      */
     public function index()
     {
-        //
+        $teacher = teacher::all();
+        $time = time::all();
+        return view('teacher.create')
+            ->with('teacher', $teacher)
+            ->with('time', $time);
     }
 
     /**
@@ -38,18 +43,13 @@ class newClassController extends Controller
         $request->validate([
             'id' => 'required',
             'class' => 'required',
-            'month' => 'required',
             'time' => 'required',
-            'teacher' => 'required',
-            'fee' => 'required',
-            'year' => 'required'
+            'teacher' => 'required'
         ]);
-
-        fee::create(['amount' => $request->fee, 'month' => $request->month, 'year' => $request->year, 'subjects_id' => $request->class, 'students_id' => $request->id, 'teachers_id' => $request->teacher]);
         student_subject::create(['subjects_id' => $request->class, 'students_id' => $request->id]);
         student_teacher::create(['teachers_id' => $request->teacher, 'students_id' => $request->id]);
         student_time::create(['times_id' => $request->time, 'students_id' => $request->id]);
-        return redirect()->route('student.show', $request->id);
+        return redirect()->route('month.show', $request->id);
     }
 
     /**
@@ -73,7 +73,15 @@ class newClassController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $teacher =  teacher::all();
+        $student = student::all();
+        $class =  subject::all();
+        $time =  time::all();
+
+        return view('newClass.edit', compact('id'))
+            ->with('teacher', $teacher)
+            ->with('class', $class)
+            ->with('time', $time);
     }
 
     /**
@@ -81,7 +89,21 @@ class newClassController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'class' => 'required',
+            'time' => 'required',
+            'teacher' => 'required',
+        ]);
+
+        $findID =  DB::connection()->select('select students_id from student_teachers where student_teachers.stuTeaID = ' . $id . ' ;');
+        DB::connection()->update('update student_subjects set subjects_id = ' . $request->class . '  where stuSubID = ' . $id . ' ;');
+        DB::connection()->update('update student_teachers set teachers_id = ' . $request->teacher . ' where stuTeaID = ' . $id . ' ;');
+        DB::connection()->update('update student_times set times_id = ' . $request->time . ' where stuTimID = ' . $id . ' ;');
+        $stuID = 0;
+        foreach ($findID as $row) {
+            $stuID = $row->students_id;
+        };
+        return redirect()->route('student.show', $stuID);
     }
 
     /**
@@ -89,6 +111,15 @@ class newClassController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+
+        $findID =  DB::connection()->select('select studentID from students join student_teachers on students.studentID = student_teachers.students_id where student_teachers.stuTeaID = ' . $id . ' ;');
+        DB::connection()->delete('delete from student_teachers where stuTeaID = ' . $id . ' ;');
+        DB::connection()->delete('delete from student_subjects where stuSubID = ' . $id . ' ;');
+        DB::connection()->delete('delete from student_times where stuTimID = ' . $id . ' ;');
+        $stuID = 0;
+        foreach ($findID as $row) {
+            $stuID = $row->studentID;
+        };
+        return redirect()->route('student.show', $stuID);
     }
 }

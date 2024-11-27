@@ -73,7 +73,7 @@
 
             <hr class="sidebar-divider my-2">
             <li class="nav-item ">
-                <a class="nav-link" href="{{route('time.create')}}"
+                <a class="nav-link" href="{{route('new.index')}}"
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Add Teacher, Class and Time</span></a>
             </li>

@@ -9,11 +9,6 @@
     @csrf
     <div class="row">
         <div class="col">
-
-            <div class="mb-3">
-                <label for="id" class="form-label">ID</label>
-                <input type="number" name="id" class="form-control" id="id" placeholder="ID" value="{{$id+1}}">
-            </div>
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
                 <input type="text" name="name" class="form-control" id="name" placeholder="Name" value="4400">
@@ -51,8 +46,6 @@
                 <p class="text-danger">{{$message}}</p>
                 @enderror
             </div>
-        </div>
-        <div class="col">
             <div class="mb-3">
                 <label for="month" class="form-label">Month</label>
                 <input type="text" name="month" class="form-control" id="month" placeholder="Month" value="4400">
@@ -60,6 +53,8 @@
                 <p class="text-danger">{{$message}}</p>
                 @enderror
             </div>
+        </div>
+        <div class="col">
             <div class="mb-3">
                 <label for="time" class="form-label">Time</label>
                 <select class="form-select" name="time" id="time" aria-label="Default select example">
@@ -127,34 +122,5 @@
         }
     });
 </script>
-
-
-<!-- select student.StudentID , student.FirstName , teacher.TeacherID  , teacher.FirstName from student join studnet_teacher on student.StudentID = studnet_teacher.StudentID JOIN  teacher on studnet_teacher.TeacherID = teacher.TeacherID; -->
-<!-- select student.StudentID , student.FirstName , teacher.TeacherID  , teacher.FirstName from student join studnet_teacher on student.StudentID = studnet_teacher.StudentID JOIN  teacher on studnet_teacher.TeacherID = teacher.TeacherID WHERE teacher.TeacherID = 1; -->
-<!-- select student.StudentID , student.FirstName , teacher.TeacherID  , teacher.FirstName from student join studnet_teacher on student.StudentID = studnet_teacher.StudentID JOIN  teacher on studnet_teacher.TeacherID = teacher.TeacherID WHERE student.StudentID = 1; -->
-
-select student.StudentID , student.FirstName , teacher.TeacherID , teacher.FirstName , class.ClassID , class.ClassID , fee.Amount , fee.Month from student
-join studnet_teacher on student.StudentID = studnet_teacher.StudentID
-JOIN teacher on studnet_teacher.TeacherID = teacher.TeacherID
-join class on teacher.TeacherID = class.ClassID
-join fee on class.ClassID = fee.ClassID
-WHERE student.StudentID = 1 AND fee.StudentID = 1;
-
-
-select teacher.TeacherID , teacher.FirstName , class.ClassID , class.ClassID , fee.Amount , fee.Month from teacher
-join class on teacher.TeacherID = class.ClassID
-join fee on class.ClassID = fee.ClassID
-WHERE teacher.TeacherID = 1;
-
-select teacher.TeacherID , teacher.FirstName , class.ClassID , class.ClassName , fee.Amount , fee.Month , sum(fee.Amount) as 'salary' from teacher
-join class on teacher.TeacherID = class.ClassID
-join fee on class.ClassID = fee.ClassID
-WHERE teacher.TeacherID = 1 AND fee.Month = 'KHOT' ;
-
-select teacher.TeacherID , teacher.FirstName , class.ClassID , class.ClassName , fee.Amount , fee.Month from teacher
-join class on teacher.TeacherID = class.ClassID
-join fee on class.ClassID = fee.ClassID
-WHERE teacher.TeacherID = 1 AND fee.Month = 'KHOT' ;
-
 
 @endsection

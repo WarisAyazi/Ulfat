@@ -120,6 +120,12 @@ class monthController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $findID =  DB::connection()->select('select studentID from students join fees on students.studentID = fees.students_id where fees.feeID = ' . $id . ' ;');
+        DB::connection()->delete('delete from fees where feeID = ' . $id . ' ;');
+        $stuID = 0;
+        foreach ($findID as $row) {
+            $stuID = $row->studentID;
+        };
+        return redirect()->route('student.show', $stuID);
     }
 }

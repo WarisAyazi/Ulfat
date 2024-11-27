@@ -62,7 +62,6 @@ class studentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id' => 'required',
             'name' => 'required',
             'fname' => 'required',
             'class' => 'required',
@@ -74,13 +73,19 @@ class studentController extends Controller
             'year' => 'required'
         ]);
 
-        // return $request->id;
+
         student::create(['stuName' => $request->name, 'stuFname' => $request->fname, 'gender' => $request->gender, 'subjects_id' => $request->class]);
-        fee::create(['amount' => $request->fee, 'month' => $request->month, 'year' => $request->year, 'subjects_id' => $request->class, 'students_id' => $request->id, 'teachers_id' => $request->teacher]);
-        student_subject::create(['subjects_id' => $request->class, 'students_id' => $request->id]);
-        student_teacher::create(['teachers_id' => $request->teacher, 'students_id' => $request->id]);
-        student_time::create(['times_id' => $request->time, 'students_id' => $request->id]);
-        return redirect()->route('index');
+        $findID = DB::connection()->select('select studentID from students order by studentID DESC  LIMIT  1 ;');
+
+        $stuID = 0;
+        foreach ($findID as $row) {
+            $stuID = $row->studentID;
+        };
+        fee::create(['amount' => $request->fee, 'month' => $request->month, 'year' => $request->year, 'subjects_id' => $request->class, 'students_id' => $stuID, 'teachers_id' => $request->teacher]);
+        student_subject::create(['subjects_id' => $request->class, 'students_id' => $stuID]);
+        student_teacher::create(['teachers_id' => $request->teacher, 'students_id' => $stuID]);
+        student_time::create(['times_id' => $request->time, 'students_id' => $stuID]);
+        return redirect()->route('student.show', $stuID);
     }
 
     /**
@@ -129,7 +134,7 @@ class studentController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource in storage. 
      */
     public function update(Request $request, $id)
     {
@@ -151,6 +156,7 @@ class studentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        DB::connection()->delete('delete from students where studentID = ' . $id . ' ;');
+        return redirect()->route('student.index');
     }
 }
