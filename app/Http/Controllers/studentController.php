@@ -24,14 +24,18 @@ class studentController extends Controller
         if ($request->has('id')) {
             $id = DB::connection()->select('select * from students where studentID = ' . $request->id . ';');
             return view('student.main')
+                ->with('page', 'student')
                 ->with('student', $id);
         } elseif ($request->has('name')) {
             $name = DB::connection()->select('select * from students where stuName = "' . $request->name . '" ;');
             return view('student.main')
+                ->with('page', 'student')
                 ->with('student', $name);
         } else {
+            $student = DB::table('students')->select("*")->orderBy('studentID', 'DESC')->get();
             return view('student.main')
-                ->with('student', student::all());
+                ->with('page', 'student')
+                ->with('student', $student);
         }
     }
 
@@ -53,6 +57,7 @@ class studentController extends Controller
             ->with('active', 'student')
             ->with('teacher', $teacher)
             ->with('class', $class)
+            ->with('page', 'student')
             ->with('time', $time);
     }
 
@@ -119,6 +124,7 @@ class studentController extends Controller
             ->with('fee', $fee)
             ->with('stu_sub', $stu_sub)
             ->with('stu_tim', $stu_tim)
+            ->with('page', 'student')
             ->with('stu_tea', $stu_tea);
     }
 
@@ -130,6 +136,7 @@ class studentController extends Controller
         $class =  subject::all();
         $rows = DB::connection()->select('select * from students where studentID = ' . $id . ';');
         return view('student.edit', compact('rows'))
+            ->with('page', 'student')
             ->with('class', $class);
     }
 

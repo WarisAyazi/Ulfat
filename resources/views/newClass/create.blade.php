@@ -2,10 +2,10 @@
 
 @section('content')
 
-<h1 class="h2 fw-bold mt-5 text-center">Student Regesteration Form</h1>
+<h1 class="h2 fw-bold mt-5 text-center">Add new Class</h1>
 <div class="row justify-content-center">
     <form action="{{route('new.store',$id)}}" class="form mt-4 p-3 " method="POST" style="width:600px">
-        <h2 class="h4">Student Detial</h2>
+        <h2 class="h4">Class Detial</h2>
         @csrf
         <div class="row">
             <div class="col">
@@ -50,8 +50,8 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Save</label>
-                    <button type="submit" class="btn btn-primary form-control">Save</button>
+                    <label class="form-label">Add</label>
+                    <button type="submit" class="btn btn-primary form-control">Add</button>
                 </div>
             </div>
 

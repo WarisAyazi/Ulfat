@@ -37,7 +37,7 @@
 
   <div class="col shadow px-4 py-3 rounded-2">
     <h2 class="h4">Subject Detial</h2>
-    <form action="{{route('subject.create')}}" class="form" method="POST">
+    <form action="{{route('subject.store')}}" class="form" method="POST">
       @csrf
       <div class="mb-3">
         <label for="sub" class="form-label">Subject Name</label>
@@ -48,8 +48,8 @@
       </div>
       <div class="mb-3">
         <label for="lan" class="form-label">Subject Language</label>
-        <select class="form-select" name="lan" id="lan" aria-label="Default select example">
-          <!-- <option selected disabled>Open this select menu</option> -->
+        <select class="form-select form-control" name="lan" id="lan" aria-label="Default select example">
+          <option selected disabled>Open this select menu</option>
           <option value="dari">Dari</option>
           <option value="pashto">Pashto</option>
         </select>
@@ -58,9 +58,9 @@
         @enderror
       </div>
       <div class="mb-3">
-        <label for="year" class="form-label">Subject Language</label>
-        <select class="form-select" name="year" id="year" aria-label="Default select example">
-          <!-- <option selected disabled>Open this select menu</option> -->
+        <label for="year" class="form-label">Year</label>
+        <select class="form-select form-control" name="year" id="year" aria-label="Default select example">
+          <option selected disabled>Open this select menu</option>
           <option value="1403">1403</option>
           <option value="1404">1404</option>
           <option value="1405">1405</option>
@@ -73,8 +73,8 @@
 
       <div class="mb-3">
         <label for="time" class="form-label">Time</label>
-        <select class="form-select" name="time" id="time" aria-label="Default select example">
-          <!-- <option selected disabled>Open this select menu</option> -->
+        <select class="form-select form-control" name="time" id="time" aria-label="Default select example">
+          <option selected disabled>Open this select menu</option>
           @foreach ($time as $row )
           <option value="{{$row->timeID}}">{{$row->time}}</option>
           @endforeach
@@ -85,8 +85,8 @@
       </div>
       <div class="mb-3">
         <label for="teacher" class="form-label">Teacher</label>
-        <select class="form-select" name="teacher" id="teacher" aria-label="Default select example">
-          <!-- <option selected disabled>Open this select menu</option> -->
+        <select class="form-select form-control" name="teacher" id="teacher" aria-label="Default select example">
+          <option selected disabled>Open this select menu</option>
           @foreach ($teacher as $row )
           <option value="{{$row->teacherID}}">{{$row->TeaName}}</option>
           @endforeach
@@ -106,12 +106,12 @@
 
   <div class="col shadow px-4 py-3 rounded-2">
     <h2 class="h4">Time Detial</h2>
-    <form action="{{route('time.create')}}" class="form" method="POST">
+    <form action="{{route('time.store')}}" class="form" method="POST">
       @csrf
       <div class="mb-3">
-        <label for="time" class="form-label">Time</label>
-        <input type="text" name="time" class="form-control" id="time" placeholder="Time">
-        @error('time')
+        <label for="time1" class="form-label">Time</label>
+        <input type="text" name="time1" class="form-control" id="time1" placeholder="Time">
+        @error('time1')
         <p class="text-danger">{{$message}}</p>
         @enderror
       </div>

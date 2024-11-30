@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1 class="h2 fw-bold mt-5 text-center">Student Regesteration Form</h1>
+<h1 class="h2 fw-bold mt-5 text-center">Student Edit Form</h1>
 @php
 $id = 0;
 $name= '';
@@ -65,7 +65,7 @@ $fname = $row->stuFname;
                 @enderror
             </div>
             <div class="mb-3">
-                <label class="form-label">Save</label>
+                <label class="form-label">Update</label>
                 <button type="submit" class="btn btn-primary form-control">Update</button>
             </div>
         </div>

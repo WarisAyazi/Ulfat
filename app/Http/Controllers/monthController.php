@@ -59,6 +59,7 @@ class monthController extends Controller
 
         return view('month.create', compact('id'))
             ->with('class', $stu_sub)
+            ->with('page', 'student')
             ->with('teacher', $stu_tea);
         //
     }
@@ -92,6 +93,7 @@ class monthController extends Controller
         return view('month.edit', compact('fees'))
             ->with('class', $stu_sub)
             ->with('findID', $findID)
+            ->with('page', 'student')
             ->with('teacher', $stu_tea);
     }
 

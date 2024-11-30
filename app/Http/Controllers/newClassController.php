@@ -24,6 +24,7 @@ class newClassController extends Controller
         $time = time::all();
         return view('teacher.create')
             ->with('teacher', $teacher)
+            ->with('page', 'teacher')
             ->with('time', $time);
     }
 
@@ -65,6 +66,7 @@ class newClassController extends Controller
         return view('newClass.create', compact('id'))
             ->with('teacher', $teacher)
             ->with('class', $class)
+            ->with('page', 'student')
             ->with('time', $time);
     }
 
@@ -81,6 +83,7 @@ class newClassController extends Controller
         return view('newClass.edit', compact('id'))
             ->with('teacher', $teacher)
             ->with('class', $class)
+            ->with('page', 'student')
             ->with('time', $time);
     }
 

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\subject;
+use App\Models\teacher;
+use App\Models\time;
+use App\Models\time_subject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,14 +19,18 @@ class subjectController extends Controller
         if ($request->has('id')) {
             $id = DB::connection()->select('select * from subjects where subjectID = ' . $request->id . ';');
             return view('subject.main')
+                ->with('page', 'subject')
                 ->with('subject', $id);
         } elseif ($request->has('name')) {
             $name = DB::connection()->select('select * from subjects where subName = "' . $request->name . '" ;');
             return view('subject.main')
+                ->with('page', 'subject')
                 ->with('subject', $name);
         } else {
+            $subject = DB::table('subjects')->select("*")->orderBy('subjectID', 'DESC')->get();
             return view('subject.main')
-                ->with('subject', subject::all());
+                ->with('page', 'subject')
+                ->with('subject', $subject);
         }
     }
 
@@ -37,19 +44,25 @@ class subjectController extends Controller
      */
     public function store(Request $request)
     {
-
-
-        subject::create([
-
-            'subName' => $request->subName,
-            'subLanguage' => $request->language,
-            'year' => $request->year,
-            'teachers_id' => $request->teacherId,
-            'times_id' => $request->time_id
-
+        $request->validate([
+            'sub' => 'required',
+            'lan' => 'required',
+            'year' => 'required',
+            'teacher' => 'required',
+            'time' => 'required'
         ]);
 
-        return redirect()->route('teacher.index');
+        subject::create([
+            'subName' => $request->sub,
+            'subLanguage' => $request->lan,
+            'year' => $request->year,
+            'teachers_id' => $request->teacher,
+            'times_id' => $request->time
+        ]);
+
+        time_subject::create(['subject_id' => $request->id, 'times_id' => $request->time]);
+
+        return redirect()->route('subject.index');
     }
 
     /**
@@ -57,7 +70,12 @@ class subjectController extends Controller
      */
     public function show(string $id)
     {
-        return $id;
+        $subject = DB::connection()->select('select * from subjects
+         join times on subjects.times_id = times.timeID
+        JOIN  teachers on subjects.subjectID = teachers.teacherID where subjectID = ' . $id . ' ;');
+        return view('subject.show', compact('id'))
+            ->with('page', 'subject')
+            ->with('subject', $subject);
     }
 
     /**
@@ -65,7 +83,12 @@ class subjectController extends Controller
      */
     public function edit(string $id)
     {
-        //
+
+        $subject = DB::connection()->select('select * from subjects where subjectID = ' . $id . ' ;');
+        return view('subject.edit', compact('subject'))
+            ->with('time', time::all())
+            ->with('page', 'subject')
+            ->with('teacher', teacher::all());
     }
 
     /**
@@ -73,7 +96,18 @@ class subjectController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'sub' => 'required',
+            'lan' => 'required',
+            'year' => 'required',
+            'teacher' => 'required',
+            'time' => 'required'
+        ]);
+        DB::connection()->update('Update subjects
+        SET subName = "' . $request->sub . '" , subLanguage = "' . $request->lan . '" , year = ' . $request->year . ', teachers_id = ' . $request->teacher . ' , times_id = ' . $request->time . ' 
+        where subjectID = ' . $id . ' ;');
+
+        return redirect()->route('subject.show', $id);
     }
 
     /**

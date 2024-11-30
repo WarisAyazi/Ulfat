@@ -17,7 +17,7 @@
         <body class="bg-muted">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
-                    <img src="{{asset('logo.png')}}" class="rounded mx d-block mx-2" style="width: 50px;" alt="logo">
+                    <img src="{{asset('logo.jpg')}}" class="rounded mx d-block mx-2" style="width: 50px;" alt="logo">
                     <a class="navbar-brand text-primary fw-bold" href="{{route('index')}}">Eng Hamidullah Ulfat</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -25,10 +25,10 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link @if($active = 'student') active @endif " href="{{route('student.index')}}">Search for students</a>
+                                <a class="nav-link" href=" {{route('student.index')}}">Search students</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="{{route('student.create')}}">Add new Student</a>
+                                <a class="nav-link @if($page == 'student') active @endif" href="{{route('student.create')}}">Add new Student</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link " href="{{route('subject.index')}}">Subjects</a>
@@ -40,7 +40,7 @@
                                 <a class="nav-link " href="{{route('teacher.index')}}">Teacher and Salary</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="{{route('new.index')}}">Add Teacher, Class and Time</a>
+                                <a class="nav-link @if($page == 'student') active @endif" href="{{route('new.index')}}">Add Teacher, Class and Time</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link " href="#">About</a>

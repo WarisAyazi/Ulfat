@@ -2,10 +2,10 @@
 
 @section('content')
 
-<h1 class="h2 fw-bold mt-5 text-center">Student Regesteration Form</h1>
+<h1 class="h2 fw-bold mt-5 text-center">Class Edit Form</h1>
 <div class="row justify-content-center">
     <form action="{{route('new.update',$id)}}" class="form mt-4 p-3 " method="POST" style="width:600px">
-        <h2 class="h4">Student Detial</h2>
+        <h2 class="h4">Class Detial</h2>
         @csrf
         @method('PUT')
         <div class="row">

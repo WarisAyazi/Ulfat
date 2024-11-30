@@ -17,13 +17,16 @@ class teacherController extends Controller
         if ($request->has('id')) {
             $id = DB::connection()->select('select * from teachers where teacherID = ' . $request->id . ';');
             return view('teacher.main')
+                ->with('page', 'teacher')
                 ->with('teacher', $id);
         } elseif ($request->has('name')) {
             $name = DB::connection()->select('select * from teachers where TeaName = "' . $request->name . '" ;');
             return view('teacher.main')
+                ->with('page', 'teacher')
                 ->with('teacher', $name);
         } else {
             return view('teacher.main')
+                ->with('page', 'teacher')
                 ->with('teacher', teacher::all());
         }
     }
@@ -42,7 +45,6 @@ class teacherController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-
             'name' => 'required',
             'last' => 'required',
             'fname' => 'required'
@@ -61,29 +63,47 @@ class teacherController extends Controller
      */
     public function show(string $id)
     {
-        $find = DB::connection()->select('select teachers.teacherID, teachers.TeaName , subjects.subName , times.time ,fees.amount  
-        from teachers join fees on teachers.teacherID = fees.teachers_id 
+        $find = DB::connection()->select('select teachers.teacherID, teachers.TeaName , subjects.subName , times.time ,fees.amount from teachers
+         join fees on teachers.teacherID = fees.teachers_id 
+       
         join subjects on  fees.subjects_id = subjects.subjectID 
         JOIN times on subjects.times_id = times.timeID   
         where teachers.teacherID = ' . $id . ' ; ');
 
-        $sum = 0;
+        $find2 = DB::connection()->select('select teachers.TeaName , subjects.subName , times.time from teachers
+        join subjects on teachers.teacherID  = subjects.teachers_id 
+        JOIN times on subjects.times_id = times.timeID   
+        where teachers.teacherID = ' . $id . ' ; ');
+
+        $find3 = DB::connection()->select('select student_teachers.teachers_id, student_teachers.students_id from teachers
+         join student_teachers on teachers.teacherID = student_teachers.teachers_id 
+             where student_teachers.teachers_id = ' . $id . ' ; ');
+
+
         $count = 0;
+        foreach ($find3 as $row) {
+            $count++;
+        };
+
+
+
+        $sum = 0;
         $name = '';
         $id = 0;
         foreach ($find as $row) {
             $sum += $row->amount;
             $name = $row->TeaName;
-            $id = $row->teacherID;
-            $count++;
+            $id = $row->teacherID;;
         };
+
 
         $teacher = DB::connection()->select(' select * from `teachers` where `teacherID` =' . $id . ' limit 1;');
         return view('teacher.show', compact('teacher'))
-            ->with('total', $find)
+            ->with('total', $find2)
             ->with('sum', $sum)
             ->with('name', $name)
             ->with('id', $id)
+            ->with('page', 'teacher')
             ->with('count', $count);
     }
 

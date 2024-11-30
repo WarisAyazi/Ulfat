@@ -1,0 +1,56 @@
+.index-svg {
+    width: 80px;
+    height: 80px;
+    stroke: #444;
+}
+
+.index {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.index a {
+    /* border: 1px solid #4e73df; */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 200px;
+    width: 100%;
+    gap: 20px;
+    padding: 0 30px;
+    border-radius: 20px;
+    /* box-shadow: 40px 44px 48px #23336284; */
+    box-shadow: 2px 2px 15px #233362a7;
+    transform: matrix(10px);
+    transition: all 05s;
+}
+
+.index a div h1 {
+    color: #444;
+    font-weight: bold;
+}
+.index a div h3 {
+    color: #444;
+    font-weight: 600;
+}
+
+/* ------------ */
+
+.main-search {
+    width: 25px;
+    height: 25px;
+    stroke: white;
+}
+
+.show-btn {
+    width: 30px;
+    height: 30px;
+    stroke: #4e73df;
+}
+.del-btn {
+    width: 30px;
+    height: 30px;
+    stroke: red;
+}
