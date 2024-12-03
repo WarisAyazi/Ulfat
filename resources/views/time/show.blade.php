@@ -1,10 +1,13 @@
 @extends('dashboard_master')
 
 @php
-use Jenssegers\Date\Date;
-Date::setLocale('fa');
-
+use Morilog\Jalali\Jalalian;
 @endphp
+
+@section('search_nav')
+<h4 class=" text-primary">
+  &ThinSpace; And total students studies at <span class="h3 fw-bolder text-info">{{$name}}</span> are <span class="h3 fw-bolder text-info">{{$count}}</span> .</h4>
+@endsection
 
 @section('content')
 
@@ -27,7 +30,11 @@ Date::setLocale('fa');
         <tr>
           <td>{{$row->timeID}}</td>
           <td>{{$row->time}}</td>
-          <td>{{Date::createFormFormat('Y-m-d H:i:s' , $row->created_at)->format('Y/m/d') }}</td>
+          @php
+          $da = $row->created_at;
+          $newDa = Jalalian::fromDateTime($da)->format('Y-m-d -- H:i:s')
+          @endphp
+          <td>{{$newDa}}</td>
           <td>
             <a href="{{route('time.edit',$row->timeID)}}" class="btn px-3  btn-sm">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="show-btn">

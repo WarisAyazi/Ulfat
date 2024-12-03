@@ -1,6 +1,8 @@
 @extends('dashboard_master')
 
-
+@php
+use Morilog\Jalali\Jalalian;
+@endphp
 
 @section('content')
 
@@ -31,7 +33,11 @@
           <td>{{$row->year}}</td>
           <td>{{$row->TeaName}}</td>
           <td>{{$row->time}}</td>
-          <td>{{$row->created_at}}</td>
+          @php
+          $da = $row->created_at;
+          $newDa = Jalalian::fromDateTime($da)->format('Y-m-d -- H:i:s')
+          @endphp
+          <td>{{$newDa}}</td>
           <td>
             <a href="{{route('subject.edit',$row->subjectID)}}" class="btn px-3  btn-sm">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="show-btn">

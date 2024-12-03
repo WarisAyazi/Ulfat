@@ -50,6 +50,9 @@ class subjectController extends Controller
             'year' => 'required',
             'teacher' => 'required',
             'time' => 'required'
+        ], [
+            'sub.required' => 'The subject field is required',
+            'lan.required' => 'The language field is required',
         ]);
 
         subject::create([
@@ -102,6 +105,9 @@ class subjectController extends Controller
             'year' => 'required',
             'teacher' => 'required',
             'time' => 'required'
+        ], [
+            'sub.required' => 'The subject field is required',
+            'lan.required' => 'The language field is required',
         ]);
         DB::connection()->update('Update subjects
         SET subName = "' . $request->sub . '" , subLanguage = "' . $request->lan . '" , year = ' . $request->year . ', teachers_id = ' . $request->teacher . ' , times_id = ' . $request->time . ' 

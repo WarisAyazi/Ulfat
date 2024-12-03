@@ -46,8 +46,8 @@ class studentController extends Controller
     {
         $teacher =  teacher::all();
         $student = student::all();
-        $class =  subject::all();
-        $time =  time::all();
+        $class =  DB::table('subjects')->select("*")->orderBy('subjectID', 'DESC')->get();
+        $time =  DB::table('times')->select("*")->orderBy('timeID', 'DESC')->get();
 
         $id = 0;
         foreach ($student as $row) {
@@ -76,6 +76,8 @@ class studentController extends Controller
             'teacher' => 'required',
             'fee' => 'required',
             'year' => 'required'
+        ], [
+            'fname.required' => 'The father name field is required.',
         ]);
 
 
@@ -151,6 +153,8 @@ class studentController extends Controller
             'fname' => 'required',
             'class' => 'required',
             'gender' => 'required'
+        ], [
+            'fname.required' => 'The father name field is required'
         ]);
         DB::connection()->update('update students
          SET stuName = "' . $request->name . '" , stuFname = "' . $request->fname . '" , subjects_id = ' . $request->class . ', gender = "' . $request->gender .

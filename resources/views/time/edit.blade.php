@@ -15,7 +15,7 @@
     <div class="mb-3">
       <label for="time" class="form-label">Time</label>
       <input type="text" name="time" class="form-control" id="time" value="{{$name}}">
-      @error('time1')
+      @error('time')
       <p class="text-danger">{{$message}}</p>
       @enderror
     </div>

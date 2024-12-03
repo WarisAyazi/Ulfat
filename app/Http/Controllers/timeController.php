@@ -43,6 +43,8 @@ class timeController extends Controller
     {
         $request->validate([
             'time1' => 'required'
+        ], [
+            'time1.required' => 'The time field is required',
         ]);
 
         time::create(['time' => $request->time1]);
@@ -52,7 +54,7 @@ class timeController extends Controller
         foreach ($find as $row) {
             $id = $row->timeID;
         };
-        // return $id;
+
         return redirect()->route('time.show', $id);
     }
 
@@ -66,9 +68,23 @@ class timeController extends Controller
         join subjects on times.timeID = subjects.times_id 
         join teachers on subjects.teachers_id = teachers.teacherID 
         Where times.timeID = ' . $id . ' ;');
+
+        $name = '';
+        foreach ($time as $row) {
+            $name = $row->time;
+        };
+
+        $student = DB::connection()->select('select * from student_times where times_id = ' . $id . ' ;');
+        $count = 0;
+        foreach ($student as $row) {
+            $count++;
+        };
+
         return view('time.show')
             ->with('time', $time)
             ->with('page', 'time')
+            ->with('count', $count)
+            ->with('name', $name)
             ->with('total', $total);
     }
 
@@ -93,6 +109,12 @@ class timeController extends Controller
     public function update(Request $request, string $id)
     {
 
+        $request->validate([
+            'time' => 'required'
+        ], [
+            'time.required' => 'The time field is required',
+
+        ]);
 
         DB::connection()->update('update times
         SET time = "' . $request->time . '" where timeID = ' . $id . ' ;');

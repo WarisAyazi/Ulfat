@@ -48,7 +48,11 @@ class teacherController extends Controller
             'name' => 'required',
             'last' => 'required',
             'fname' => 'required'
+        ], [
+            'last.required' => 'The last name field is required',
+            'fname.required' => 'The father name field is required',
         ]);
+
         teacher::create([
             'TeaName' => $request->name,
             'TeaFname' => $request->fname,
@@ -125,6 +129,9 @@ class teacherController extends Controller
             'name' => 'required',
             'last' => 'required',
             'fname' => 'required'
+        ], [
+            'last.required' => 'The last name field is required',
+            'fname.required' => 'The father name field is required',
         ]);
         DB::connection()->update('update teachers
         SET TeaName = "' . $request->name . '" , TeaFname = "' . $request->fname . '" , TeaLastName = "' . $request->last . '"  
