@@ -68,15 +68,7 @@ $tim++;
         </svg>
       </a>
 
-      <a href="{{route('budget.index')}}" class="btn text-start">
-        <div>
 
-          <h3>Budget</h3>
-        </div>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 80px;" class="index-svg">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
-        </svg>
-      </a>
     </div>
 
 
@@ -111,9 +103,9 @@ $tim++;
         </svg>
       </a>
 
-      <a href="" class=" btn text-start">
+      <a href="{{route('budget.index')}}" class=" btn text-start">
         <div>
-          <h3>About</h3>
+          <h3>Budget</h3>
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 70px;" class="index-svg">
           <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />

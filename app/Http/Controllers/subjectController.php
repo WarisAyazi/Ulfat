@@ -62,10 +62,15 @@ class subjectController extends Controller
             'teachers_id' => $request->teacher,
             'times_id' => $request->time
         ]);
+        $findID = DB::connection()->select('select subjectID from subjects order by subjectID DESC  LIMIT  1 ;');
 
-        time_subject::create(['subject_id' => $request->id, 'times_id' => $request->time]);
+        $subID = 0;
+        foreach ($findID as $row) {
+            $subID = $row->subjectID;
+        };
 
-        return redirect()->route('subject.index');
+        time_subject::create(['subjects_id' => $subID, 'times_id' => $request->time]);
+        return redirect()->route('subject.show', $subID);
     }
 
     /**
@@ -75,7 +80,8 @@ class subjectController extends Controller
     {
         $subject = DB::connection()->select('select * from subjects
          join times on subjects.times_id = times.timeID
-        JOIN  teachers on subjects.subjectID = teachers.teacherID where subjectID = ' . $id . ' ;');
+        JOIN  teachers on subjects.Teachers_id = teachers.teacherID where subjectID = ' . $id . ' ;');
+        // return $id;
         return view('subject.show', compact('id'))
             ->with('page', 'subject')
             ->with('subject', $subject);
@@ -109,6 +115,8 @@ class subjectController extends Controller
             'sub.required' => 'The subject field is required',
             'lan.required' => 'The language field is required',
         ]);
+
+        // return $request->teacher;
         DB::connection()->update('Update subjects
         SET subName = "' . $request->sub . '" , subLanguage = "' . $request->lan . '" , year = ' . $request->year . ', teachers_id = ' . $request->teacher . ' , times_id = ' . $request->time . ' 
         where subjectID = ' . $id . ' ;');

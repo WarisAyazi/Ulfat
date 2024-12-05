@@ -26,7 +26,7 @@
             <div class="mb-3">
                 <label for="class" class="form-label">Class</label>
                 <select class="form-select" name="class" id="class" aria-label="Default select example">
-                    <option selected disabled>Open this select menu</option>
+                    <option selected disabled>Class</option>
                     @foreach ($class as $row )
                     <option value="{{$row->subjectID}}">{{$row->subName}}</option>
                     @endforeach
@@ -38,7 +38,7 @@
             <div class="mb-3">
                 <label for="gender" class="form-label">Gender</label>
                 <select class="form-select" name="gender" id="gender" aria-label="Default select example">
-                    <option selected disabled>Open this select menu</option>
+                    <option selected disabled>Gender</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                 </select>
@@ -48,7 +48,21 @@
             </div>
             <div class="mb-3">
                 <label for="month" class="form-label">Month</label>
-                <input type="text" name="month" class="form-control" id="month" placeholder="Month">
+                <select class="form-control" name="month" id="month" aria-label="Default select example">
+                    <option selected disabled>Month</option>
+                    <option value="Hamal">1- Hamal</option>
+                    <option value="Saur">2- Saur</option>
+                    <option value="Jawza">3- Jawza</option>
+                    <option value="Saratan">4- Saratan</option>
+                    <option value="Asad">5- Asad</option>
+                    <option value="Sumbula">6- Sumbula</option>
+                    <option value="Mizan">7- Mizan</option>
+                    <option value="Aqrab">8- Aqrab</option>
+                    <option value="Qaws">9- Qaws</option>
+                    <option value="Jadi">10- Jadi</option>
+                    <option value="Dalwa">11- Dalwa</option>
+                    <option value="Hoot">12- Hoot</option>
+                </select>
                 @error('month')
                 <p class="text-danger">{{$message}}</p>
                 @enderror
@@ -58,7 +72,7 @@
             <div class="mb-3">
                 <label for="time" class="form-label">Time</label>
                 <select class="form-select" name="time" id="time" aria-label="Default select example">
-                    <option selected disabled>Open this select menu</option>
+                    <option selected disabled>Time</option>
                     @foreach ($time as $row )
                     <option value="{{$row->timeID}}">{{$row->time}}</option>
                     @endforeach
@@ -70,7 +84,7 @@
             <div class="mb-3">
                 <label for="teacher" class="form-label">Teacher</label>
                 <select class="form-select" name="teacher" id="teacher" aria-label="Default select example">
-                    <option selected disabled>Open this select menu</option>
+                    <option selected disabled>Teacher</option>
                     @foreach ($teacher as $row )
                     <option value="{{$row->teacherID}}">{{$row->TeaName}}</option>
                     @endforeach
@@ -89,7 +103,7 @@
             <div class="mb-3">
                 <label for="year" class="form-label">Year</label>
                 <select class="form-select" name="year" id="year" aria-label="Default select example">
-                    <option selected disabled>Open this select menu</option>
+                    <option selected disabled>Year</option>
                     <option value="1403">1403</option>
                     <option value="1405">1404</option>
                     <option value="1405">1405</option>

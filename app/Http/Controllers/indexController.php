@@ -49,8 +49,8 @@ class indexController extends Controller
             $count++;
         };
 
-        $find1 = DB::connection()->select('select teachers.TeaName ,  fees.amount, fees.year 
-        from teachers join fees on teachers.teacherID = fees.teachers_id   
+        $find1 = DB::connection()->select('select teachers.TeaName ,  fees.amount, fees.year, students.stuName , studentID 
+        from teachers join fees on teachers.teacherID = fees.teachers_id JOIN  students on students.studentID = feeS.students_id  
         where teachers.teacherID = ' . $request->id . ' and fees.month = "' . $request->month . '" and year = ' . $request->year  . '  ; ');
         $sum1 = 0;
         $count1 = 0;
@@ -66,6 +66,7 @@ class indexController extends Controller
             ->with('sum1', $sum1)
             ->with('count1', $count1)
             ->with('total', $find2)
+            ->with('find', $find1)
             ->with('sum', $sum)
             ->with('name', $name)
             ->with('id', $id)
@@ -87,8 +88,6 @@ class indexController extends Controller
         $total = DB::connection()->select('select * from subjects join students on subjects.subjectID = students.subjects_id 
             join fees on students.studentID = fees.students_id where subjects.subjectID = ' . $request->id . ' and fees.month = "' . $request->month . '" and fees.year = ' . $request->year . ' ;');
 
-        // $total = DB::table('subjects')->select('select * from subjects join students on subjects.subjectID = students.subjects_id 
-        //     join fees on students.studentID = fees.students_id where subjects.subjectID = ' . $request->id . ' and fees.month = "' . $request->month . '" and fees.year = ' . $request->year . ' ')->orderBy('feeID', 'DESC')->get();
 
         $countMon = 0;
         $countNum = 0;

@@ -49,9 +49,9 @@
       <div class="mb-3">
         <label for="lan" class="form-label">Subject Language</label>
         <select class="form-select form-control" name="lan" id="lan" aria-label="Default select example">
-          <option selected disabled>Open this select menu</option>
-          <option value="dari">Dari</option>
-          <option value="pashto">Pashto</option>
+          <option selected disabled>Subject Language</option>
+          <option value="Dari">Dari</option>
+          <option value="Pashto">Pashto</option>
         </select>
         @error('lan')
         <p class="text-danger">{{$message}}</p>
@@ -60,7 +60,7 @@
       <div class="mb-3">
         <label for="year" class="form-label">Year</label>
         <select class="form-select form-control" name="year" id="year" aria-label="Default select example">
-          <option selected disabled>Open this select menu</option>
+          <option selected disabled>Year</option>
           <option value="1403">1403</option>
           <option value="1404">1404</option>
           <option value="1405">1405</option>
@@ -74,7 +74,7 @@
       <div class="mb-3">
         <label for="time" class="form-label">Time</label>
         <select class="form-select form-control" name="time" id="time" aria-label="Default select example">
-          <option selected disabled>Open this select menu</option>
+          <option selected disabled>Time</option>
           @foreach ($time as $row )
           <option value="{{$row->timeID}}">{{$row->time}}</option>
           @endforeach
@@ -86,7 +86,7 @@
       <div class="mb-3">
         <label for="teacher" class="form-label">Teacher</label>
         <select class="form-select form-control" name="teacher" id="teacher" aria-label="Default select example">
-          <option selected disabled>Open this select menu</option>
+          <option selected disabled>Teacher</option>
           @foreach ($teacher as $row )
           <option value="{{$row->teacherID}}">{{$row->TeaName}}</option>
           @endforeach

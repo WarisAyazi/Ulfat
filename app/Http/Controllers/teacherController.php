@@ -59,7 +59,15 @@ class teacherController extends Controller
             'TeaLastName' => $request->last
         ]);
 
-        return redirect()->route('teacher.index');
+        $findID = DB::connection()->select('select teacherID from teachers order by teacherID DESC  LIMIT  1 ;');
+
+        $teaID = 0;
+        foreach ($findID as $row) {
+            $teaID = $row->teacherID;
+        };
+
+
+        return redirect()->route('teacher.show', $teaID);
     }
 
     /**
@@ -67,6 +75,9 @@ class teacherController extends Controller
      */
     public function show(string $id)
     {
+        $teacher = DB::connection()->select(' select * from `teachers` where `teacherID` =' . $id . ' ;');
+
+
         $find = DB::connection()->select('select teachers.teacherID, teachers.TeaName , subjects.subName , times.time ,fees.amount from teachers
          join fees on teachers.teacherID = fees.teachers_id 
        
@@ -89,8 +100,6 @@ class teacherController extends Controller
             $count++;
         };
 
-
-
         $sum = 0;
         $name = '';
         $id = 0;
@@ -100,8 +109,6 @@ class teacherController extends Controller
             $id = $row->teacherID;;
         };
 
-
-        $teacher = DB::connection()->select(' select * from `teachers` where `teacherID` =' . $id . ' limit 1;');
         return view('teacher.show', compact('teacher'))
             ->with('total', $find2)
             ->with('sum', $sum)
@@ -117,7 +124,8 @@ class teacherController extends Controller
     public function edit(string $id)
     {
         $teacher = DB::connection()->select('select * from teachers where teacherID = ' . $id . ' ;');
-        return view('teacher.edit', compact('teacher'));
+        return view('teacher.edit', compact('teacher'))
+            ->with('page', 'teacher');
     }
 
     /**

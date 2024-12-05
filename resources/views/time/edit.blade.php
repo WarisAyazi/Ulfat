@@ -5,11 +5,12 @@
 
 
 
-<h1 class="h2 fw-bold mt-5 text-center">Time Update Form</h1>
+<h2 class="h2 fw-bold mt-5 text-center">Time Update form</h2>
 <div class="row justify-content-center">
-
-  <form action="{{route('time.update',$id)}}" class="form" method="POST">
+  <form action="{{route('time.update',$id)}}" class="form" method="POST" style="width:600px;">
     @csrf
+    <h2 class="h4">Time Detial</h2>
+
     @method('PUT')
 
     <div class="mb-3">

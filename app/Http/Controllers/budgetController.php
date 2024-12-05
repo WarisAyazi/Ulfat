@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\fee;
 use App\Models\student;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class budgetController extends Controller
 {
@@ -21,14 +23,17 @@ class budgetController extends Controller
             $num++;
         };
 
+        $numReg = 0;
         $amount = 0;
         foreach ($fee as $row) {
+            $numReg++;
             $amount += $row->amount;
         };
 
         return view('budget.main')
             ->with('num', $num)
-            ->with('page', 'student')
+            ->with('numReg', $numReg)
+            ->with('page', 'budget')
             ->with('amount', $amount);
     }
 
@@ -45,7 +50,25 @@ class budgetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'year' => 'required'
+        ]);
+
+
+        $year = $request->year;
+
+        $Hamal = DB::connection()->select('select * from fees where mounth = "Hamal" and year = ' . $year . ' ;');
+        $Saur = DB::connection()->select('select * from fees where mounth = "Saur" and year = ' . $year . ' ;');
+        $Jawza = DB::connection()->select('select * from fees where mounth = "Jawza" and year = ' . $year . ' ;');
+        $Saratan = DB::connection()->select('select * from fees where mounth = "Saratan" and year = ' . $year . ' ;');
+        $Asad = DB::connection()->select('select * from fees where mounth = "Asad" and year = ' . $year . ' ;');
+        $Sumbula = DB::connection()->select('select * from fees where mounth = "Sumbula" and year = ' . $year . ' ;');
+        $Mizan = DB::connection()->select('select * from fees where mounth = "Mizan" and year = ' . $year . ' ;');
+        $Aqrab = DB::connection()->select('select * from fees where mounth = "Aqrab" and year = ' . $year . ' ;');
+        $Qaws = DB::connection()->select('select * from fees where mounth = "Qaws" and year = ' . $year . ' ;');
+        $Jadi = DB::connection()->select('select * from fees where mounth = "Jadi" and year = ' . $year . ' ;');
+        $Dalwa = DB::connection()->select('select * from fees where mounth = "Dalwa" and year = ' . $year . ' ;');
+        $Hoot = DB::connection()->select('select * from fees where mounth = "Hoot" and year = ' . $year . ' ;');
     }
 
     /**

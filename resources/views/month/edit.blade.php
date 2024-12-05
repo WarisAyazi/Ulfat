@@ -37,7 +37,21 @@ $year = $row->year;
             </div>
             <div class="mb-3">
                 <label for="month" class="form-label">Month</label>
-                <input type="text" name="month" class="form-control" id="month" placeholder="Month" value="{{$month}}">
+                <select class="form-control" name="month" id="month" aria-label="Default select example">
+                    <option selected disabled>Open this select menu</option>
+                    <option value="Hamal">1- Hamal</option>
+                    <option value="Saur">2- Saur</option>
+                    <option value="Jawza">3- Jawza</option>
+                    <option value="Saratan">4- Saratan</option>
+                    <option value="Asad">5- Asad</option>
+                    <option value="Sumbula">6- Sumbula</option>
+                    <option value="Mizan">7- Mizan</option>
+                    <option value="Aqrab">8- Aqrab</option>
+                    <option value="Qaws">9- Qaws</option>
+                    <option value="Jadi">10- Jadi</option>
+                    <option value="Dalwa">11- Dalwa</option>
+                    <option value="Hoot">12- Hoot</option>
+                </select>
                 @error('month')
                 <p class="text-danger">{{$message}}</p>
                 @enderror

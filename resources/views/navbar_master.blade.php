@@ -40,10 +40,10 @@
                                 <a class="nav-link " href="{{route('teacher.index')}}">Teacher and Salary</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link @if($page == 'student') active @endif" href="{{route('new.index')}}">Add Teacher, Class and Time</a>
+                                <a class="nav-link @if($page == 'teacher') active @endif" href="{{route('new.index')}}">Add Teacher, Class and Time</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="#">About</a>
+                                <a class="nav-link " href="{{route('budget.index')}}">Budget</a>
                             </li>
 
                         </ul>
@@ -56,6 +56,17 @@
 
         @yield('content')
     </div>
+
+    <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright &copy; Ayazi @php
+                    echo date('Y')
+                    @endphp
+                </span>
+            </div>
+        </div>
+    </footer>
 
 </body>
 

@@ -44,7 +44,7 @@ $fname = $row->stuFname;
             <div class="mb-3">
                 <label for="class" class="form-label">Class</label>
                 <select class="form-select" name="class" id="class" aria-label="Default select example">
-                    <!-- <option selected disabled>Open this select menu</option> -->
+                    <option selected disabled>Open this select menu</option>
                     @foreach ($class as $row )
                     <option value="{{$row->subjectID}}">{{$row->subName}}</option>
                     @endforeach
@@ -56,7 +56,7 @@ $fname = $row->stuFname;
             <div class="mb-3">
                 <label for="gender" class="form-label">Gender</label>
                 <select class="form-select" name="gender" id="gender" aria-label="Default select example">
-                    <!-- <option selected disabled>Open this select menu</option> -->
+                    <option selected disabled>Open this select menu</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                 </select>

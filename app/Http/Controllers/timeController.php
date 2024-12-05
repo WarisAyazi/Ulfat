@@ -113,7 +113,6 @@ class timeController extends Controller
             'time' => 'required'
         ], [
             'time.required' => 'The time field is required',
-
         ]);
 
         DB::connection()->update('update times

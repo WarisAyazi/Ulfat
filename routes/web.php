@@ -7,8 +7,8 @@ use App\Http\Controllers\teacherController;
 use Illuminate\Support\Facades\Route;
 
 route::get('/', [indexController::class, 'index'])->name('index');
-route::post('salary', [indexController::class, 'salary'])->name('salary');
 route::get('search', [indexController::class, 'search'])->name('search');
+route::post('salary', [indexController::class, 'salary'])->name('salary');
 route::post('stuSub', [indexController::class, 'stuSub'])->name('stuSub');
 
 route::resource('student', 'App\Http\Controllers\studentController');

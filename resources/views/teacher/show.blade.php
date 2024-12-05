@@ -5,7 +5,7 @@ use Morilog\Jalali\Jalalian;
 
 @section('search_nav')
 
-<h4 class=" text-primary">The Total Salary of <span class="h3 fw-bolder text-info">{{$name}}</span> Teacher is <span class="h3 fw-bolder text-info">{{$sum}}</span>.
+<h4 class=" text-primary">The Total budget of <span class="h3 fw-bolder text-info">{{$name}}</span> Teacher is <span class="h3 fw-bolder text-info">{{$sum}}</span>.
   &ThinSpace; And total students studies with <span class="h3 fw-bolder text-info">{{$name}}</span> Teacher are <span class="h3 fw-bolder text-info">{{$count}}</span> .</h4>
 @endsection
 
@@ -51,74 +51,9 @@ use Morilog\Jalali\Jalalian;
   </div>
 </div>
 
-<div class="card mb-5 shadow my-5">
-  <div class="card-header">
-
-    <form action="{{route('salary')}}" method="POST" class="from  ">
-      @csrf
-      <div class="row gap-3">
-        <input type="number" name="id" class="form-control col mx-1" placeholder="Teacher ID" value="{{$id}}">
-        @error('name')
-        <p class="text-danger">{{$message}}</p>
-        @enderror
-
-        <input type="text" name="month" class="form-control col mx-1" placeholder="Month">
-        @error('month')
-        <p class="text-danger">{{$message}}</p>
-        @enderror
-
-        <select class="form-select form-control col mx-1" name="time" id="time" aria-label="Default select example">
-          <!-- <option selected disabled>Open this select menu</option> -->
-          @foreach ($total as $row )
-          <option value="{{$row->time}}">{{$row->time}}</option>
-          @endforeach
-        </select>
-        @error('time')
-        <p class="text-danger">{{$message}}</p>
-        @enderror
-
-        <select class="form-select form-control col mx-1" name="year" aria-label="Default select example">
-          <!-- <option selected disabled>Open this select menu</option> -->
-          <option value="1403">1403</option>
-          <option value="1404">1404</option>
-          <option value="1405">1405</option>
-          <option value="1406">1406</option>
-        </select>
-        @error('year')
-        <p class="text-danger">{{$message}}</p>
-        @enderror
-
-        <input type="submit" class="form-control btn btn-primary col mx-1" value="Search">
-
-      </div>
-    </form>
-  </div>
-
-  @if (isset($year) && !empty($year))
-
-
-
-  <div class="card-body py-3">
-    <h5 class="m-0 font-weight-bold text-dark">
-      The total Salary in
-      <span class="text-info  fw-bolder">{{$year}}</span> in
-      <span class="text-info  fw-bolder">{{$month}}</span> of
-      <span class="text-info fw-bolder">{{$name}}</span> Teacher is
-      <span class="text-info  fw-bolder">{{$sum1}}</span> .
-    </h5>
-    <h5 class=" m-0 font-weight-bold text-dark">The total students studies in <span class="text-info  fw-bolder">{{$month}}</span> mouth with <span class="text-info fw-bolder">{{$name}}</span> Teacher are <span class="text-info fw-bolder">{{$count1}}</span> .</h5>
-
-  </div>
-
-</div>
-
-
-@endif
-
-
 <div class="card mt-5 shadow">
   <div class="card-header py-3">
-    <h5 class="m-0 font-weight-bold text-primary">Subjects and there Times teach with teacher {{$name}}.</h5>
+    <h5 class="m-0 font-weight-bold text-primary">Subjects and there Times teach by teacher {{$name}}.</h5>
   </div>
   <div class="card-body">
     <table class="table text-center table-striped">
@@ -141,6 +76,118 @@ use Morilog\Jalali\Jalalian;
     </table>
   </div>
 </div>
+
+<div class="card mb-5 shadow my-5">
+  <div class="card-header">
+
+    <form action="{{route('salary')}}" method="POST" class="from  ">
+      @csrf
+      <div class="row gap-3">
+        <input type="number" name="id" class="form-control col mx-1" placeholder="Teacher ID" value="{{$id}}">
+        @error('name')
+        <p class="text-danger">{{$message}}</p>
+        @enderror
+
+        <select class="form-control col mx-1" name="month" id="month" aria-label="Default select example">
+          <option selected disabled>Mouth</option>
+          <option value="Hamal">1- Hamal</option>
+          <option value="Saur">2- Saur</option>
+          <option value="Jawza">3- Jawza</option>
+          <option value="Saratan">4- Saratan</option>
+          <option value="Asad">5- Asad</option>
+          <option value="Sumbula">6- Sumbula</option>
+          <option value="Mizan">7- Mizan</option>
+          <option value="Aqrab">8- Aqrab</option>
+          <option value="Qaws">9- Qaws</option>
+          <option value="Jadi">10- Jadi</option>
+          <option value="Dalwa">11- Dalwa</option>
+          <option value="Hoot">12- Hoot</option>
+
+        </select>
+        @error('month')
+        <p class="text-danger">{{$message}}</p>
+        @enderror
+
+        <select class="form-select form-control col mx-1" name="time" id="time" aria-label="Default select example">
+          <option selected disabled>Time</option>
+          @foreach ($total as $row )
+          <option value="{{$row->time}}">{{$row->time}}</option>
+          @endforeach
+        </select>
+        @error('time')
+        <p class="text-danger">{{$message}}</p>
+        @enderror
+
+        <select class="form-select form-control col mx-1" name="year" aria-label="Default select example">
+          <option selected disabled>Year</option>
+          <option value="1403">1403</option>
+          <option value="1404">1404</option>
+          <option value="1405">1405</option>
+          <option value="1406">1406</option>
+        </select>
+        @error('year')
+        <p class="text-danger">{{$message}}</p>
+        @enderror
+
+        <input type="submit" class="form-control btn btn-primary col mx-1" value="Search">
+
+      </div>
+    </form>
+  </div>
+
+  @if (isset($year) && !empty($year))
+
+
+
+  <div class="card-body py-3">
+    <h5 class="m-0 font-weight-bold text-dark">
+      The total Salary in
+      <span class="text-info  fw-bolder">{{$year}}</span> year of
+      <span class="text-info  fw-bolder">{{$month}}</span> month for
+      <span class="text-info fw-bolder">{{$name}}</span> Teacher is
+      <span class="text-info  fw-bolder">{{$sum1}}</span> .
+    </h5>
+    <h5 class=" m-0 font-weight-bold text-dark">The total students registere in <span class="text-info  fw-bolder">{{$month}}</span> mouth with <span class="text-info fw-bolder">{{$name}}</span> Teacher are <span class="text-info fw-bolder">{{$count1}}</span> .</h5>
+
+    <div class="card-body">
+      <table class="table text-center table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Teacher Name</th>
+            <th>Student ID</th>
+            <th>Student Name </th>
+            <th>amount</th>
+            <th>Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          @php
+          $count = 1;
+          @endphp
+          @foreach ($find as $row )
+          <tr>
+            <td>@php echo $count; $count++ @endphp
+            </td>
+            <td>{{$row -> TeaName}}</td>
+            <td>{{$row -> studentID}}</td>
+            <td>{{$row -> stuName}}</td>
+            <td>{{$row->amount}}</td>
+            <td>{{$row -> year}}</td>
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+
+@endif
+
+
+
 
 
 

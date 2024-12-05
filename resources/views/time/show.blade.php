@@ -84,3 +84,7 @@ use Morilog\Jalali\Jalalian;
 
 
 @endsection
+
+@section('script')
+
+@endsection

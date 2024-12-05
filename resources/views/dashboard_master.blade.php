@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{csrf_token()}}" />
 
     <title>SB Admin 2 - Blank</title>
 
@@ -96,9 +97,9 @@
 
 
             <hr class="sidebar-divider my-2">
-            <li class="nav-item @if($page == 'about') active @endif">
-                <a class="nav-link d-flex justify-content-between" href="index.html">
-                    <span>About</span>
+            <li class="nav-item @if($page == 'budget') active @endif">
+                <a class="nav-link d-flex justify-content-between" href="{{route('budget.index')}}">
+                    <span>Budget</span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 70px;" class="main-search">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
                     </svg></a>
@@ -189,6 +190,7 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{asset('dashboard/vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('dashboard/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
@@ -196,7 +198,7 @@
 
     <script src="{{asset('vendor/chart.js/Chart.min.js')}}"></script>
     <script src="{{asset('dashboard/js/demo/chart-bar-demo.js')}}"></script>
-
+    @yield('script')
 
 </body>
 
