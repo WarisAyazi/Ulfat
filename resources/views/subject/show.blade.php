@@ -68,7 +68,7 @@ use Morilog\Jalali\Jalalian;
       <option value="Jawza">3- Jawza</option>
       <option value="Saratan">4- Saratan</option>
       <option value="Asad">5- Asad</option>
-      <option value="Sumbula">6- Sumbula</option>
+      <option value="Sunbula">6- Sunbula</option>
       <option value="Mizan">7- Mizan</option>
       <option value="Aqrab">8- Aqrab</option>
       <option value="Qaws">9- Qaws</option>

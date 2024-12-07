@@ -81,7 +81,7 @@ $year = $row->year;
             <div class="mb-3">
                 <label for="teacher" class="form-label">Teacher</label>
                 <select class="form-select" name="teacher" id="teacher" aria-label="Default select example">
-                    <!-- <option selected disabled>Open this select menu</option> -->
+                    <option selected disabled>Open this select menu</option>
                     @foreach ($teacher as $row )
                     <option value="{{$row->teacherID}}">{{$row->TeaName}}</option>
                     @endforeach

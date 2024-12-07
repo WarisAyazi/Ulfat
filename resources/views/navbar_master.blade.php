@@ -6,8 +6,9 @@
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
         rel="stylesheet" />
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=hi, initial-scale=1.0">
-    <title>@yield('header')</title>
+    <title>Ulfat</title>
 
 </head>
 

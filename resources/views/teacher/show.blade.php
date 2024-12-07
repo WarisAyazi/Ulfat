@@ -5,8 +5,8 @@ use Morilog\Jalali\Jalalian;
 
 @section('search_nav')
 
-<h4 class=" text-primary">The Total budget of <span class="h3 fw-bolder text-info">{{$name}}</span> Teacher is <span class="h3 fw-bolder text-info">{{$sum}}</span>.
-  &ThinSpace; And total students studies with <span class="h3 fw-bolder text-info">{{$name}}</span> Teacher are <span class="h3 fw-bolder text-info">{{$count}}</span> .</h4>
+<h5 class=" text-primary">The Total budget of <span class="h4 fw-bolder text-info">{{$name}}</span> Teacher is <span class="h4 fw-bolder text-info">{{$sum}}</span>.
+  &ThinSpace; And total students studies with <span class="h4 fw-bolder text-info">{{$name}}</span> Teacher are <span class="h4 fw-bolder text-info">{{$count}}</span> .</h5>
 @endsection
 
 @section('content')
@@ -56,7 +56,7 @@ use Morilog\Jalali\Jalalian;
     <h5 class="m-0 font-weight-bold text-primary">Subjects and there Times teach by teacher {{$name}}.</h5>
   </div>
   <div class="card-body">
-    <table class="table text-center table-striped">
+    <table class="table text-center table-sm table-striped">
       <thead>
         <tr>
           <th>Name</th>
@@ -150,7 +150,7 @@ use Morilog\Jalali\Jalalian;
     <h5 class=" m-0 font-weight-bold text-dark">The total students registere in <span class="text-info  fw-bolder">{{$month}}</span> mouth with <span class="text-info fw-bolder">{{$name}}</span> Teacher are <span class="text-info fw-bolder">{{$count1}}</span> .</h5>
 
     <div class="card-body">
-      <table class="table text-center table-striped">
+      <table class="table text-center table-sm table-striped">
         <thead>
           <tr>
             <th>#</th>

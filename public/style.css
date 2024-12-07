@@ -5,23 +5,22 @@
 }
 
 .index {
-    display: flex;
-    align-items: center;
+    margin: 10px auto;
+    width: 1200px;
     justify-content: center;
+    display: flex;
     gap: 20px;
 }
 
 .index a {
-    /* border: 1px solid #4e73df; */
     display: flex;
     align-items: center;
     justify-content: space-around;
-    height: 200px;
+    height: 180px;
     width: 100%;
     gap: 20px;
     padding: 0 30px;
     border-radius: 20px;
-    /* box-shadow: 40px 44px 48px #23336284; */
     box-shadow: 2px 2px 15px #233362a7;
     transform: matrix(10px);
     transition: all 05s;
@@ -35,8 +34,6 @@
     color: #444;
     font-weight: 600;
 }
-
-/* ------------ */
 
 .main-search {
     width: 25px;
