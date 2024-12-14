@@ -85,7 +85,14 @@ class budgetController extends Controller
         $Jadi = DB::connection()->select('select * from fees where month = "Jadi" and year = ' . $year . ' ;');
         $Dalwa = DB::connection()->select('select * from fees where month = "Dalwa" and year = ' . $year . ' ;');
         $Hoot = DB::connection()->select('select * from fees where month = "Hoot" and year = ' . $year . ' ;');
+        $findYear = DB::connection()->select('select * from fees where year = ' . $year . ' ;');
 
+        $conYear = 0;
+        $amoYear = 0;
+        foreach ($findYear as $row) {
+            $conYear++;
+            $amoYear += $row->amount;
+        };
         $conHam = 0;
         $amoHam = 0;
         foreach ($Hamal as $row) {
@@ -195,6 +202,9 @@ class budgetController extends Controller
 
             ->with('conHoo', $conHoo)
             ->with('amoHoo', $amoHoo)
+
+            ->with('conYear', $conYear)
+            ->with('amoYear', $amoYear)
 
             ->with('amount', $amount)
 

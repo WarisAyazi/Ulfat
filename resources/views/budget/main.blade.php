@@ -94,6 +94,7 @@
                         </tr>
                     </tbody>
                 </table>
+                <h3 class="text-right fw-bold">The total monthly regestration is <span class="text-primary fw-bold">{{$conYear}}</span> and total amount is <span class="text-primary fw-bold">{{$amoYear}}</span></h3>
                 @endif
             </div>
         </div>
